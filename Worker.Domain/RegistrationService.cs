@@ -2,7 +2,12 @@
 
 namespace Worker.Domain;
 
-public class RegistrationService
+public interface IRegistrationService
+{
+    Task RegisterAsync();
+}
+
+public class RegistrationService : IRegistrationService
 {
     private readonly ISettings settings;
     private readonly IDistributedCalculatorCoordinator distributedCalculatorCoordinator;

@@ -1,4 +1,6 @@
-﻿namespace Worker.Domain;
+﻿using Worker.Domain.Configuration;
+
+namespace Worker.Domain;
 
 public interface IDistributedCalculatorCoordinator
 {
@@ -7,9 +9,18 @@ public interface IDistributedCalculatorCoordinator
 
 public class DistributedCalculatorCoordinator : IDistributedCalculatorCoordinator
 {
-    public Task<RegistrationResponse> RegisterAsync(Guid workerId, string teamName, string createJobEndPoint , string errorCheckEndpoint)
+    private readonly ILogger logger;
+
+    public DistributedCalculatorCoordinator(ILogger logger)
     {
-        throw new NotImplementedException();
+        this.logger = logger;
+    }
+    
+    public async Task<RegistrationResponse> RegisterAsync(Guid workerId, string teamName, string createJobEndPoint , string errorCheckEndpoint)
+    {
+        logger.LogInfo($"Danny was here! {nameof(workerId)}:{workerId}; {nameof(teamName)}:{teamName}; {nameof(createJobEndPoint)}:{createJobEndPoint}; {nameof(errorCheckEndpoint)}:{errorCheckEndpoint}");
+
+        throw new Exception(nameof(NotImplementedException));
     }
 }
 
