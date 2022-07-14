@@ -6,6 +6,7 @@ public interface ISettings
     string TeamName { get; }
     string CreateJobEndpoint { get; }
     string ErrorCheckEndpoint { get; }
+    string CoordinatorBaseUrl { get; }
 }
 
 public class Settings : ISettings
@@ -14,4 +15,5 @@ public class Settings : ISettings
     public string TeamName { get; set;  }
     public string CreateJobEndpoint { get; set; }
     public string ErrorCheckEndpoint { get; set; }
+    public string CoordinatorBaseUrl { get; set; }
 }

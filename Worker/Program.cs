@@ -3,9 +3,9 @@ using Worker.Domain;
 using Worker.Domain.Configuration;
 using ILogger = Worker.Domain.Configuration.ILogger;
 
-Console.WriteLine("test output");
-
 var builder = WebApplication.CreateBuilder(args);
+
+Emmersion.Http.DependencyInjectionConfig.ConfigureServices(builder.Services);
 
 var localConfigOverridesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "src-overrides", "distributed-calculator-kata", "appsettings.json");
 builder.Configuration.AddJsonFile(localConfigOverridesPath);
@@ -17,6 +17,7 @@ builder.Services.AddSingleton<ISettings>(x => x.GetRequiredService<IOptions<Sett
 builder.Services.AddTransient<ILogger, Logger>();
 builder.Services.AddTransient<IDistributedCalculatorCoordinator, DistributedCalculatorCoordinator>();
 builder.Services.AddTransient<IRegistrationService, RegistrationService>();
+builder.Services.AddTransient<IJsonSerializer, JsonSerializer>();
 
 var app = builder.Build();
 
