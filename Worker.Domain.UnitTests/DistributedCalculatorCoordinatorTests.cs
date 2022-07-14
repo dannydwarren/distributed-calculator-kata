@@ -10,8 +10,6 @@ namespace Worker.Domain.UnitTests;
 
 public class DistributedCalculatorCoordinatorTests : UnitTestBase<DistributedCalculatorCoordinator>
 {
-    //error check: {"result":"You must provide valid URIs for the CreateJob and ErrorCheck endpoints"}
-    
     [Fact]
     public async Task When_posting_registration()
     {
