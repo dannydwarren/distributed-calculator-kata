@@ -9,6 +9,7 @@ public class Calculator : ICalculator
 {
     public int Calculate(string calculation)
     {
-        throw new NotImplementedException();
+        var parts = calculation.Split('+', StringSplitOptions.TrimEntries);
+        return parts.Select(int.Parse).Sum();
     }
 }
