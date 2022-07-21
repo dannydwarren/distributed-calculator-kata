@@ -6,7 +6,7 @@ namespace Worker.Controllers;
 [Route("diagnostic")]
 public class DiagnosticController : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("health-check")]
     public IActionResult HealthCheck()
     {
         var assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;

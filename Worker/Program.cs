@@ -22,7 +22,7 @@ builder.Services.AddTransient<IJsonSerializer, JsonSerializer>();
 var app = builder.Build();
 
 app.UseRouting();
-app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+app.MapControllers();
 
 var x = app.Services.GetRequiredService<IRegistrationService>();
 await x.RegisterAsync();
