@@ -28,12 +28,12 @@ public class DistributedCalculatorCoordinatorTests : UnitTestBase<DistributedCal
 
         GetMock<ISettings>().SetupGet(x => x.CoordinatorBaseUrl).Returns(coordinatorBaseUrl);
         
-        DistributedCalculatorCoordinator.RegistrationRequest capturedRegistrationRequest = null;
+        DistributedCalculatorCoordinator.RegistrationRequest? capturedRegistrationRequest = null;
         GetMock<IJsonSerializer>().Setup(x => x.Serialize(IsAny<DistributedCalculatorCoordinator.RegistrationRequest>()))
             .Callback<DistributedCalculatorCoordinator.RegistrationRequest>(registrationRequest => capturedRegistrationRequest = registrationRequest)
             .Returns(registrationRequestJson);
 
-        HttpRequest capturedRequest = null;
+        HttpRequest? capturedRequest = null;
         GetMock<IHttpClient>().Setup(x => x.ExecuteAsync(IsAny<IHttpRequest>()))
             .Callback<IHttpRequest>(request => capturedRequest = (HttpRequest)request)
             .ReturnsAsync(httpResponse);

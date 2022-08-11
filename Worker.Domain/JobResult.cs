@@ -1,7 +1,7 @@
 ﻿namespace Worker.Domain;
 
-public class JobResult
+public record JobResult
 {
-    public int Result { get; set; }
-    public Guid JobId { get; set; }
+    public int Result { get; init; }
+    public Guid JobId { get; init; }
 }

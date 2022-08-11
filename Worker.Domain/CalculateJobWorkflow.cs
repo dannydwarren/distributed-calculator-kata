@@ -9,12 +9,12 @@ public class CalculateJobWorkflow
         this.calculator = calculator;
     }
     
-    public async Task<JobResult> CalculateAsync(Job job)
+    public JobResult Calculate(Job job)
     {
         return new JobResult
         {
             JobId = job.Id,
-            Result = calculator.Calculate("")
+            Result = calculator.Calculate(job.Calculation)
         };
     }
 }

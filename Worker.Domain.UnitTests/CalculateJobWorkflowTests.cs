@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
 
@@ -10,17 +9,18 @@ public class CalculateJobWorkflowTests : UnitTestBase<CalculateJobWorkflow>
     private readonly Random rand = new();
     
     [Fact]
-    public async Task When_calculating_a_job()
+    public void When_calculating_a_job()
     {
         var job = new Job
         {
-            Id = NewGuid()
+            Id = NewGuid(),
+            Calculation = RandomString()
         };
         var expectedResult = rand.Next();
         
-        GetMock<ICalculator>().Setup(x => x.Calculate(IsAny<string>())).Returns(expectedResult);
+        GetMock<ICalculator>().Setup(x => x.Calculate(job.Calculation)).Returns(expectedResult);
         
-        var response = await BecauseAsync(() => ClassUnderTest.CalculateAsync(job));
+        var response = Because(() => ClassUnderTest.Calculate(job));
         
         It("returns the result for the correct job", () =>
         {
