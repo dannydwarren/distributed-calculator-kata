@@ -2,6 +2,6 @@
 
 public record Job
 {
-    public Guid Id { get; init; }
+    public Guid JobId { get; init; }
     public string Calculation { get; init; } = "";
 }

@@ -15,6 +15,8 @@ builder.Services.AddControllers();
 builder.Services.Configure<Settings>(builder.Configuration.GetSection(nameof(Settings)));
 builder.Services.AddSingleton<ISettings>(x => x.GetRequiredService<IOptions<Settings>>().Value);
 builder.Services.AddTransient<ILogger, Logger>();
+builder.Services.AddTransient<ICalculateJobWorkflow, CalculateJobWorkflow>();
+builder.Services.AddTransient<ICalculator, Calculator>();
 builder.Services.AddTransient<IDistributedCalculatorCoordinator, DistributedCalculatorCoordinator>();
 builder.Services.AddTransient<IRegistrationService, RegistrationService>();
 builder.Services.AddTransient<IJsonSerializer, JsonSerializer>();

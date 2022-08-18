@@ -13,7 +13,7 @@ public class CalculateJobWorkflowTests : UnitTestBase<CalculateJobWorkflow>
     {
         var job = new Job
         {
-            Id = NewGuid(),
+            JobId = NewGuid(),
             Calculation = RandomString()
         };
         var expectedResult = rand.Next();
@@ -24,7 +24,7 @@ public class CalculateJobWorkflowTests : UnitTestBase<CalculateJobWorkflow>
         
         It("returns the result for the correct job", () =>
         {
-            response.JobId.ShouldBe(job.Id);
+            response.JobId.ShouldBe(job.JobId);
         });
         
         It("returns the result of the calculation", () =>
