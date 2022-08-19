@@ -2,7 +2,7 @@
 
 public interface ICalculateJobWorkflow
 {
-    JobResult Calculate(Job job);
+    JobResult Calculate(CalculationJob job);
 }
 
 public class CalculateJobWorkflow : ICalculateJobWorkflow
@@ -14,7 +14,7 @@ public class CalculateJobWorkflow : ICalculateJobWorkflow
         this.calculator = calculator;
     }
     
-    public JobResult Calculate(Job job)
+    public JobResult Calculate(CalculationJob job)
     {
         var calc = calculator.Calculate(job.Calculation);
         var result = new JobResult

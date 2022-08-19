@@ -16,6 +16,7 @@ builder.Services.Configure<Settings>(builder.Configuration.GetSection(nameof(Set
 builder.Services.AddSingleton<ISettings>(x => x.GetRequiredService<IOptions<Settings>>().Value);
 builder.Services.AddTransient<ILogger, Logger>();
 builder.Services.AddTransient<ICalculateJobWorkflow, CalculateJobWorkflow>();
+builder.Services.AddTransient<IErrorCheckWorkflow, ErrorCheckWorkflow>();
 builder.Services.AddTransient<ICalculator, Calculator>();
 builder.Services.AddTransient<IDistributedCalculatorCoordinator, DistributedCalculatorCoordinator>();
 builder.Services.AddTransient<IRegistrationService, RegistrationService>();

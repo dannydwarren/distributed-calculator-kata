@@ -11,7 +11,7 @@ public class CalculateJobWorkflowTests : UnitTestBase<CalculateJobWorkflow>
     [Fact]
     public void When_calculating_a_job()
     {
-        var job = new Job
+        var job = new CalculationJob
         {
             JobId = NewGuid(),
             Calculation = RandomString()

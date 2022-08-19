@@ -7,17 +7,28 @@ namespace Worker.Controllers;
 public class JobController : ControllerBase
 {
     private readonly ICalculateJobWorkflow calculateJobWorkflow;
+    private readonly IErrorCheckWorkflow errorCheckWorkflow;
 
-    public JobController(ICalculateJobWorkflow calculateJobWorkflow)
+    public JobController(ICalculateJobWorkflow calculateJobWorkflow,
+        IErrorCheckWorkflow errorCheckWorkflow)
     {
         this.calculateJobWorkflow = calculateJobWorkflow;
+        this.errorCheckWorkflow = errorCheckWorkflow;
     }
     
     [HttpPost("calculate")]
-    public JobResult Calculate([FromBody] Job job)
+    public JobResult Calculate([FromBody] CalculationJob job)
     {
         var response = calculateJobWorkflow.Calculate(job);
 
         return response;
+    }
+    
+    [HttpPost("error-check")]
+    public IActionResult ErrorCheck([FromBody] ErrorCheckJob job)
+    {
+        errorCheckWorkflow.Check(job);
+
+        return Ok();
     }
 }
